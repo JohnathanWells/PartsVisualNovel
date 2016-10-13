@@ -1,0 +1,21 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 52: expected statement.
+    Rin = Character('Armored Woman(Rin)')
+        ^
+
+File "game/script.rpy", line 64: expected statement.
+    Rin = Character('Young Rin')
+        ^
+
+File "game/script.rpy", line 65: expected statement.
+    Huang = Character('Eyepatch Man (Huang)')
+          ^
+
+File "game/script.rpy", line 66: expected statement.
+    Suoh = Character('Red Armor Man (Suoh)')
+         ^
+
+Ren'Py Version: Ren'Py 6.99.11.1749
