@@ -1,26 +1,20 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 57, in script
-    with dissolve(0.3)
-TypeError: 'Dissolve' object is not callable
+  File "game/script.rpy", line 327, in script
+    eslow "..."
+Exception: Sayer 'eslow' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 57, in script
-    with dissolve(0.3)
-  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\ast.py", line 1265, in execute
-    renpy.exports.with_statement(trans, paired)
-  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\exports.py", line 1370, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\core.py", line 2058, in do_with
-    clear=clear)
-  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\core.py", line 2496, in interact
-    repeat, rv = self.interact_core(preloads=preloads, **kwargs)
-  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\core.py", line 2717, in interact_core
-    new_widget=layers_root)
-TypeError: 'Dissolve' object is not callable
+  File "game/script.rpy", line 327, in script
+    eslow "..."
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\ast.py", line 583, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\ast.py", line 500, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who.encode("utf-8"))
+Exception: Sayer 'eslow' is not defined.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.11.1749
