@@ -1,20 +1,86 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 327, in script
-    eslow "..."
-Exception: Sayer 'eslow' is not defined.
+  File "game/script.rpy", line 798, in script
+    show Rin angry
+Exception: Unknown text tag u'size+=8'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 327, in script
-    eslow "..."
-  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\ast.py", line 583, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\ast.py", line 500, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who.encode("utf-8"))
-Exception: Sayer 'eslow' is not defined.
+  File "game/script.rpy", line 798, in script
+    show Rin angry
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\ast.py", line 603, in execute
+    renpy.exports.say(who, what, interact=self.interact)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\exports.py", line 1135, in say
+    who(what, interact=interact)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\character.py", line 873, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, **display_args)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\character.py", line 719, in do_display
+    **display_args)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\character.py", line 510, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\ui.py", line 278, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\core.py", line 2496, in interact
+    repeat, rv = self.interact_core(preloads=preloads, **kwargs)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\core.py", line 2850, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\core.py", line 1916, in draw_screen
+    renpy.config.screen_height,
+  File "renpy/display/render.pyx", line 416, in renpy.display.render.render_screen (gen\renpy.display.render.c:6685)
+    rv = render(root, width, height, 0, 0)
+  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\layout.py", line 661, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\layout.py", line 661, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\layout.py", line 661, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\screen.py", line 618, in render
+    child = renpy.display.render.render(self.child, w, h, st, at)
+  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\layout.py", line 661, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\layout.py", line 1046, in render
+    st, at)
+  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\display\layout.py", line 661, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 103, in renpy.display.render.render (gen\renpy.display.render.c:3319)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 185, in renpy.display.render.render (gen\renpy.display.render.c:2857)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\text\text.py", line 1719, in render
+    virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\text\text.py", line 551, in __init__
+    self.paragraphs = self.segment(text.tokens, style, renders, text)
+  File "C:\Users\jgonzale5\Downloads\renpy-6.99.11-sdk\renpy\text\text.py", line 1044, in segment
+    raise Exception("Unknown text tag %r" % text)
+Exception: Unknown text tag u'size+=8'
 
 Windows-8-6.2.9200
 Ren'Py 6.99.11.1749

@@ -2,12 +2,16 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 324: could not parse statement.
-    play sound objectFall with vpunch
-                          ^
+File "game/script.rpy", line 1108: reached end of line when expecting ':'.
+    if ADick == False
+                     ^
 
-File "game/script.rpy", line 359: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "How could I forget about this?"
-                                    ^
+File "game/script.rpy", line 1125: expected statement.
+    else
+        ^
+
+File "game/script.rpy", line 1130: reached end of line when expecting ':'.
+    if ADick == False
+                     ^
 
 Ren'Py Version: Ren'Py 6.99.11.1749
