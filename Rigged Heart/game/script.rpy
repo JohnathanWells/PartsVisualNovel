@@ -15,6 +15,7 @@ label variableDeclaration:
         $ Tai_Affection = 0
         $ Gekai_Affection = 0
         $ Sheru_Closeness = 10
+        $ ToldNaibuYouWereGay = False
 
     define RinName = "Armored Woman"
     define HuangName = "Eyepatch Man"
@@ -44,8 +45,10 @@ label variableDeclaration:
     image Rin smug = "ch/rh/rin_happy.png"
     image Rin sadSmile = "ch/rh/rin_happy.png"
     image Rin angry = "ch/rh/rin_happy.png"
+    image Rin annoyed_b = "ch/rh/rin_happy.png"
 
     ##Naibu
+    
     #image Naibu smiling 
 
     ##Tojai
@@ -59,6 +62,7 @@ label variableDeclaration:
     image bg hall = "#aaffff"
     image bg limoInside = "#ffbbff"
     image bg commercialArea = "#999999"
+    image bg NaibuRoom = "#ff0066"
 
     #Still Pictures
     image birthdaySurprise = "bg/black.png"
@@ -967,7 +971,7 @@ label start:
                 Tojai "Indeed... Kogan certainly complicated the matters for us."
                 show Rin serious
                 Rin "I don't think the rest of the family is thinking very fondly of you now."
-                show Rojai serious
+                show Tojai serious
                 Tojai "They were prepared to accept you as the heir, but now suddenly they refuse because you are not a Component."
                 show Tojai angry
                 Tojai "Hypocrites."
@@ -1073,7 +1077,7 @@ label start:
                 Shichi "..."
                 $ Knowledge += 1
             "Stay silent":
-                "My mother sighed."
+                "My mother sighs."
         
         $ ADick = False
 
@@ -1119,11 +1123,15 @@ label start:
                     Rin "Good night Shichi. Good luck with your sister."
                     Tojai "Do not keep yourselves awake for too long."
                     Shichi "Promised."
+                    
                     hide Rin
-                    hide Rojai
+                    hide Tojai
                     with fadeout
                 else:
                     "I stay in the room for a little longer and decide to go after Naibu."
+                
+                "I leave the room and go in direction of Naibu's"
+                pause(3)
                 jump .scene5b
             "Go to your room.":
                 $ Confidence -= 1
@@ -1144,6 +1152,356 @@ label start:
         return
 
     label .scene5b:
+        play music calmed
+        "I stand in front of Naibu's door."
+        "I can feel a knot in my throat, product of my nervousness."
+        menu:
+            "Knock on the door.":
+                play sound doorKnock
+                "I knock on her door and wait for a short time."
+                "..."
+                "No response."
+                play sound doorKnock
+                "I knock again and wair a little longer."
+                "..."
+                "..."
+                "Still no response."
+                play sound doorOpening
+                "I turn the knob and open the door slowly."
+            "Tell her you're going to enter.":
+                Shichi "Naibu"
+                "..."
+                "No response"
+                Shichi "Naibu, I'm going in."
+                "..."
+                "Still no response."
+                "I take that as a permission and open the door slowly."
+                play sound doorOpening
+            "Enter without asking.":
+                "I open the door without telling her in advance."
+                play sound doorOpening
+        scene bg NaibuRoom
+        show Naibu sad
+        with fadein
+
+        Naibu "Hi..."
+        "Naibu is sitting on her bed, hugging a pillow."
+        "Bellow her, there is a pair of faint lines from tears."
+        "Her cute and charming face looks frowned and gloomy. Her sight avoids my prescence."
+        
+        menu:
+            "\"I'm sorry we never told you\"":
+                "She darts her eyes quickly at me for a couple of seconds before taking them off me again."
+                menu:
+                    "Lie about why you didn't tell her.":
+                        label C5b211:
+                            Shichi "To be honest, we thought you were too young and you would tell someone at some point."
+                            Naibu "I wouldn't have..."
+                            Shichi "We couldn't take any risks. You saw what happened."
+                            Naibu "..."
+                            "Naiby stays silent for a bit. She is clearly mad but more understanding."
+                            Naibu "I want everyone to stop treating me like a kid."
+                            Naibu "You should have told me, Shichi."
+                            Shichi "You are right, I should have."
+                            Naibu "I was thinking about telling you tomorrow, once the risks were minimized."
+                            "Naibu sighs and puts her pillow down."
+                            menu:
+                                "\"I am sorry\"":
+                                    #show Naibu smiling
+                                    "Naibu looks at me, smiling sadly."
+                                    Naibu "I am sorry I reacted that way too."
+                                    Naibu "You are still my onii-san. Thank you for coming here."
+                                    $ Naibu_Affection += 3
+                                    "I smile to her."
+                                    Shichi "That's what siblings are for."
+                                    "She giggles and we hug shortly."
+                                    Naibu "I am a little tired now. I think I will go to sleep." 
+                                    
+                                    label .C5b2111:
+                                        menu:
+                                            "\"Sure thing. I will do the same, good night!\"":
+                                                $ Naibu_Affection += 1
+                                                Naibu "Good night!"
+                                            
+                                                scene bg Black
+                                                hide Naibu
+                                                with fadeout
+                                                
+                                                "I leave her room and go to mine, more relaxed."
+                                                "I change, lay on my bed and fall asleep shortly after."
+                                                jump .scene6
+                                            
+                                            "\"Want me to sleep with you?\"":
+                                                $ Naibu_Affection -= 1
+                                                #show Naibu b_surprised
+                                                Naibu "W-what?!"
+                                                "Naibu blushes intensely."
+                                                Naibu "{b}You are such a pervert!{/b}"
+                                                
+                                                scene bg Black
+                                                hide Naibu
+                                                with fadeout
+
+                                                "Naibu hits me with her pillow and literally kicks me out of her room."
+                                                "I go to my room, hurting from the kicks."
+                                                "I drop myself on the bed, bothered by having screwed it up like that, and fall asleep shortly after."
+                                                jump .scene6
+
+                                        return
+
+                                "Pat her head.":
+                                    "I pat Naibu on the head."
+                                    #show Naibu b_annoyed
+                                    Naibu "..."
+                                    "She is clearly annoyed but doesn't complain."
+                                    Naibu "I am sorry I acted that way..."
+                                    Naibu "But I just told you to not treat me like a kid."
+                                    Shichi "You are still my little sister."
+                                    Naibu "I-I guess..."
+                                    $ Naibu_Affection += 2
+                                    #show Naibu b_angry
+                                    Naibu "A-anyway you should stop, I need to go to sleep now."
+                                    jump .C5b2111
+
+                                "Hug her.":
+                                    "I move towards Naibu and cover her with my arms in a hug."
+                                    "She stays responseless for a couple of seconds, not having expected my action."
+                                    "She finally returns the hug to me."
+                                    "We stay like that for a couple of seconds. Then we separate and I see that she's blushing."
+                                    #show Naibu smiling_b
+                                    Naibu "T-thank you."
+                                    Naibu "I needed that."
+                                    $ Naibu_Affection += 3
+                                    Shichi "Anytime, onee-chan."
+                                    #show Naibu smiling
+                                    "She smiles to me and giggles."
+                                    Naibu "I should go to sleep now, onii-san."
+                                    jump .C5b2111
+
+                                "Throw her out of the bed.":
+                                    "I suddenly push Naibu out of the bed."
+                                    $ Naibu_Affection -= 2
+                                    play sound objectFall
+                                    #show Naibu surprised
+                                    "She awkwardly falls to the floor dumbfounded." with vpunch
+                                    #show Naibu angry
+                                    Naibu "W-what the hell?!"
+                                    "I laugh as she stands up. Then she throws a pillow to my face and kicks me to the floor."
+                                    scene bg Black 
+                                    hide Naibu
+                                    with fadeout
+                                    "She keeps kicking me in the floor without stopping."
+                                    "I try to cover myself but" with vpunch
+                                    extend "she keeps" with vpunch
+                                    extend " kicking." with vpunch
+                                    "I eventually manage to escape and leave her room."
+                                    "I limp to my room, feeling the pain of her kicks all over my body."
+                                    Shichi "She is "
+                                    extend "{b}ouch{/b} stronger than I" with vpunch
+                                    extend "{b}ouch{/b} thought..." with vpunch
+                                    "I drop o my bed groaning from the pain and fall asleep."
+                                    jump .scene6
+                                    
+                            return
+
+                    "Say you wanted to protect her.":
+                        Shichi "I just wanted to protect you."
+                        show Naibu angry
+                        Naibu "Oh, come on. At least don't act like a cliche. How would not telling me protect me?"
+                        label .C5b212:
+                            menu:
+                                "\"Someone may have tortured you to get that information.\"":
+                                    Naibu "..."
+                                    #show Naibu serious
+                                    Naibu "I can't believe you said something so stupid."
+                                    Naibu "You know that wouldn't have happened. It's just too unlikely."
+                                    $ Naibu_Affection -= 2
+                                    "She throws her pillow at my face and get under the bedsheets."
+                                    hide Naibu
+                                    with fadeout
+                                    Naibu "Get out."
+                                    Shichi "Naibu..."
+                                    Naibu "{b}Get {\b}"
+                                    extend "{b}Out{\b}"
+                                    "I sigh and leave her room."
+                                    scene bg Black
+                                    with fadein
+                                    Shichi "I should have left her alone..."
+                                    "I walk to my room and get in my bed"
+                                    "Eventually, I fall asleep while I look at the ceiling thinking of what I could have done better."
+                                    jump .scene6
+                                "\"I didn't want you to feel betrayed.\"":
+                                    #show Naibu angry
+                                    Naibu "Yeah, because that worked out really well."
+                                    Naibu "Try giving me a better answer now."
+                                    jump .C5b212
+                                "\"I did't want you to feel ashamed of your brother\"":
+                                    jump .C5b22
+                                "Tell her she was too young to understand.":
+                                    jump .C5b211
+
+                            return
+                    "Try to win back her trust by telling her a secret.":
+                        Shichi "If it makes you feel any better, I can tell you a secret I have never told anyone else."
+                        "Naibu stares curiously at me."
+                        Shichi "In exchange for not trusting you with that one before."
+                        #show Naibu serious
+                        Naibu "Well... go ahead"
+                        menu:
+                            "Tell her you're gay.":
+                                Shichi "I'm gay."
+                                #show Naibu surprised
+                                "Naiby looks at me shocked, not expecting that to be my secret."
+                                Naibu "A-are you for real?"
+                                Naibu "You're gay?"
+                                Shichi "Yes."
+                                "She suddenly oubursts hyperactiveness."
+                                #show Naibu excited
+                                Naibu "{b}Yaoi~!{/b}"
+                                Shichi "..."
+                                extend "What?"
+                                Naibu "So-"
+                                "Oh"
+                                Naibu "Soooooo-"
+                                "Oh no"
+                                Naibu "{i}Sugoiiiiii~!{/i}"
+                                $ Naibu_Affection += 3
+                                $ ToldNaibuYouWereGay = True
+                                "My sister is an otaku"
+                                Naibu "What's the name of your crush? Are you the seme or the uke? are you-"
+                                Shichi "Whoa whoa there."
+                                Shichi "I sure wasn't expecting you to be so excited about it."
+                                Shichi "I thought you would be... worried?"
+                                #show Naibu surprised
+                                Naibu "Why would I be?"
+                                Shichi "It's just that... you know... as the next clan leader..."
+                                Naibu "...Oh... yeah"
+                                Naibu "You need heirs."
+                                Shichi "It's already bad enough that I'm adopted."
+                                Naibu "Well, how would the bloodline thing work out now?"
+                                Shichi "Mom told me I would need to later make one of my kids marry someone in the family."
+                                #show Naibu serious
+                                Naibu "Oh..."
+                                "Naibu looks lost in thought."
+                                Naibu "We will think of something later."
+                                Shichi "Mhmm"
+                                #show Naibu smiling
+                                Naibu "Thank you for telling me onii-san."
+                                #show Naibu happy
+                                Naibu "I'm glad you trust me so much."
+                                #show Naibu smiling
+                                Naibu "Sorry for what I said earlier."
+                                Shichi "It's fine, Naibu. What matters is that everything is fixed now."
+                                "Naibu nods happily."
+                                Naibu "I should go to bed now, if you don't mind."
+                                Shichi "Oh, no. Not at all."
+                                Naibu "If you need help with that whole thing..."
+                                Naibu "You know you can trust me. I won't tell a soul."
+                                Shichi "Thank you onee-chan."
+                                "I stand up and stop by the door."
+                                Shichi "Good night."
+                                #show Naibu happy
+                                Naibu "Good night!"
+                                scene bg Black
+                                hide Naibu
+                                with fadein
+                                "I close the door behind me and go to my room."
+                                "I change my clothes, get in the bed and fall asleep shortly after."
+                                jump .scene6
+
+                            "Tell her a creepy childhood memory.":
+                                Shichi "So... I have this childhood memory."
+                                play music tense
+                                Shichi "I don't know if it really happened to be honest,"
+                                Shichi "I just kind of remember it."
+                                Shichi "I was around... six years old."
+                                Shichi "This was before they found me in the forest."
+                                #show Naibu serious
+                                Naibu "..."
+                                Shichi "It was late at night looking for food."
+                                Shichi "I would usually avoid doing that in fear of predators, but I failed to secure something during the day and I was hungry."
+                                Shichi "I went to a local farm and saw there was a cow dangerously close to the fence near the forest."
+                                Shichi "I carried my wooden spear and walked towards it."
+                                Shichi "Then, it turned around in my direction and stood up."
+                                Shichi "Its eyes were glowing in the dark, its body had more fur than usual."
+                                Shichi "But what made me run away was the height."
+                                Shichi "This was twice as tall as any of the other cows, and most of the height was in its {i}legs.{/i}"
+                                Shichi "They were long and thin in a very abnormal way."
+                                Shichi "I don't think it followed me to the cave, and if it did I lost it."
+                                Naibu "..."
+                                "I shrug carelessly and look at Naibu."
+                                Shichi "I don't know if it was a nightmare, but I remember it too well."
+                                Shichi "Well, you wanted a secret. I'm sure it's not what you wanted but I don't have more to hide."
+                                $ Naibu_Affection += 2
+                                Naibu "T-That's an interesting story..."
+                                "Naibu's voice is shaky."
+                                Naibu "Thanks for telling me..."
+                                Naibu "...in the night..."
+                                Naibu "...when I'm going to be alone in my room."
+                                Shichi "..."
+                                Naibu "..."
+                                Shichi "..."
+                                Naibu "..."
+                                Shichi "Boo"
+                                #Naibu show surprised
+                                Naibu "AAHH-"
+                                "Naibu falls to the floor from the \"scare\"."
+                                "I laugh uncontrollaby, she blushes from the shame."
+                                #show Naibu b_angry
+                                Naibu "H-hey that's cruel!"
+                                Shichi "Sorry, sorry. I had to do it."
+                                Shichi "It's a true story though. I wasn't making it up."
+                                Naibu "..."
+                                Shichi "You are right about one thing. It's late, we should sleep."
+                                #show Naibu b_surprised
+                                Naibu "W-wait..."
+                                Shichi "Yeah?"
+                                Naibu "C-can you stay with me until I sleep?"
+                                Shichi "That scared huh"
+                                #show Naibu b_angry
+                                Naibu "S-shut up it's your fault."
+                                menu:
+                                    "\"Sure, I can do that.\"":
+                                        Naibu "G-good"
+                                        scene bg Black
+                                        hide Naibu
+                                        with fadeout
+                                        "I turn off the lights and leave her nightstand light open before sitting on the chair next to the bed."
+                                        "I accompany Naibu until I'm sure she's asleep, then I leave the room without making noise."
+                                        $ Naibu_Affection += 1
+                                        jump .scene6
+
+                                    "\"Nah\"":
+                                        Naibu "..."
+                                        scene bg Black
+                                        hide Naibu
+                                        with fadeout
+                                        "I quickly spring out of her room and get in mine."
+                                        jump .scene6
+
+                            "Tell her you like someone you shoudln't.":
+                                Shichi "I... like someone I shouldn't."
+                                #show Naibu surprised
+                                Naibu "Oh really?"
+                                #show Naibu smiling
+                                Naibu "May I know who's the fortunate lady?"
+                                menu:
+                                    "Tojaiwa.":
+                                        "WIP"
+                                    "Someone.":
+                                        "WIP"
+                                    "Refuse to tell her.":
+                                        "WIP"
+            "\"I am still your brother, Naibu\"":
+                label .C5b22:
+
+                    "WIP"
+
+                    return
+            "\"Don't act like a kid. Behave yourself\"":
+                "WIP"
+
+
         return
 
     label .scene6:
